@@ -27,16 +27,17 @@ const mainWrapper = async (filename) => {
   // projects we have a separated folder with files + parser inside.
   // we can make a root directory as default inside of `parserDirectoryFiles`
   // and change it if passed another variable
-  // const directory = './';
+  const directory = './';
 
-  // const directoryPath = path.join(__dirname, directory + filename);
+  const directoryPath = path.join(__dirname, directory + filename);
 
-  //test version
-  const directoryPath = path.join(__dirname, filename);
+  // test version
+  // const directoryPath = path.join(__dirname, filename);
 
   // console.log(filename);
   // console.log(directoryPath);
   parseDirectoryFiles(directoryPath, headers);
+  // parseDirectoryFiles(filename, headers);
 };
 
 export {
