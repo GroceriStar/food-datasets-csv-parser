@@ -35,8 +35,11 @@ const mainWrapper = async (filename) => {
   // const directoryPath = path.join(__dirname, filename);
 
   // console.log(filename);
-  // console.log(directoryPath);
-  parseDirectoryFiles(directoryPath, headers);
+
+  console.log(directoryPath);
+  console.log('---');
+  console.log(headers);
+  // parseDirectoryFiles(directoryPath, headers);
   // parseDirectoryFiles(filename, headers);
 };
 

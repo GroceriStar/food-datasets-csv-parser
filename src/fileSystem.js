@@ -32,6 +32,7 @@ const parseDirectoryFiles = (directoryPath, headers) => {
   // passing directoryPath and callback function
   console.log('-- 1. starting of the method --');
   console.log(directoryPath);
+  console.log('----');
   readdir(directoryPath, (err, files) => {
     // handling error
     if (err) {
