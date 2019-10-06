@@ -4,13 +4,13 @@ const fs = require('fs');
 const {
   mainWrapper,
   parseCsv,
-  writeJsonFile
+  csvToJson
 } = require('../../../../dist/index.cjs');
 
 async function Main() {
   // const fileName = `Fish_NV_sum (per 100 g EP).csv`;
   const rawFilePath = `${__dirname}/Restaurants.csv`;
   const data = await parseCsv(rawFilePath);
-  writeJsonFile();
+  await csvToJson('rest.json', data);
 }
 Main();
