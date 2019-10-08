@@ -55,7 +55,6 @@ const assign = (file, dataEntries) => {
 const csvToJson = (dirPath, data) => {
   // stringify data with indent
   const json = JSON.stringify(data, null, 2);
-  let fileName;
 
   fs.readdir(dirPath, async (err, files) => {
     // find the csv file
@@ -66,7 +65,7 @@ const csvToJson = (dirPath, data) => {
       return false;
     });
     // save the name of the csv file without the extension
-    [fileName] = csvFile.split('.');
+    const [fileName] = csvFile.split('.'); // => ["filename", "csv"]
 
     // create a JSON file with the data provided
     await write(`${dirPath}/${fileName}.json`, json);
