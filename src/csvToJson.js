@@ -52,11 +52,12 @@ const assign = (file, dataEntries) => {
  * @param {data} data
  * @returns {Promise<void>} Promise
  */
-const csvToJson = async (dirPath, data) => {
+const csvToJson = (dirPath, data) => {
   // stringify data with indent
   const json = JSON.stringify(data, null, 2);
+  let fileName;
 
-  fs.readdir(dirPath, (err, files) => {
+  fs.readdir(dirPath, async (err, files) => {
     // find the csv file
     const csvFile = files.find((file) => {
       if (file.split('.')[1] === 'csv') {
@@ -65,12 +66,10 @@ const csvToJson = async (dirPath, data) => {
       return false;
     });
     // save the name of the csv file without the extension
-    const fileName = csvFile.split('.')[0];
+    [fileName] = csvFile.split('.');
 
     // create a JSON file with the data provided
-    fs.writeFile(`${dirPath}/${fileName}.json`, json, () => {
-      console.log('successfully wrote file');
-    });
+    await write(`${dirPath}/${fileName}.json`, json);
   });
 };
 
