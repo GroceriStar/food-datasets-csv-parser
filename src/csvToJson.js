@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { write } from '@groceristar/static-data-generator';
 // import { joinPath } from './utils';
+import fs from 'fs';
 import parseCsv from './parseCsv';
 
 function makeFullPath(pathData, filetype) {
@@ -45,13 +46,30 @@ const assign = (file, dataEntries) => {
   }
 };
 
-// @TODO
-// I don't like the name for this method and for the whole file
-// if it's main - then let's put it into index.js
-const csvToJson = async (path, headers) => {
-  const fullPath = makeFullPath(path, '.csv');
-  const data = await parseCsv(fullPath, headers);
-  assign(path, data);
+/**
+ * @async
+ * @param {dirPath} dirPath directory path
+ * @param {data} data
+ * @returns {Promise<void>} Promise
+ */
+const csvToJson = (dirPath, data) => {
+  // stringify data with indent
+  const json = JSON.stringify(data, null, 2);
+
+  fs.readdir(dirPath, async (err, files) => {
+    // find the csv file
+    const csvFile = files.find((file) => {
+      if (file.split('.')[1] === 'csv') {
+        return file;
+      }
+      return false;
+    });
+    // save the name of the csv file without the extension
+    const [fileName] = csvFile.split('.'); // => ["filename", "csv"]
+
+    // create a JSON file with the data provided
+    await write(`${dirPath}/${fileName}.json`, json);
+  });
 };
 
 export default csvToJson;

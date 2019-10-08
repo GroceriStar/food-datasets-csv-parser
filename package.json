@@ -21,6 +21,7 @@
     "csv:usfa3": "node ./projects2.0/USFA/Product/parser",
     "csv:usfa4": "node ./projects2.0/USFA/Serving_Size/parser",
     "csv:fish_reftbl": "node ./projects2.0/FAO/Fish/Fish_Reftbl_RefDatasets/parser",
+    "csv:res": "node ./projects2.0/Restaurants/parser",
     "csv:fao1": "node ./projects2.0/FAO/Fish/Fish_NV_Sum/parser",
     "csv:fao2": "node ./projects2.0/FAO/Food/Cereals/parser",
     "csv:fao3": "node ./projects2.0/FAO/Food/Fish_Shellfish/parser",

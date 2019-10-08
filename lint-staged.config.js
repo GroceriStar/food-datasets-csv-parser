@@ -23,11 +23,11 @@
 // }
 
 module.exports = {
-  '**/*.+(js)': [
+  '**/*.js': [
     //   'eslint --fix',
     //   'prettier --write',
     //   'jest --findRelatedTests',
-    'pretty-quick --staged',
+    'pretty-quick --staged --pattern "**/*.js"',
     'npm run lint',
     'git add',
   ],
