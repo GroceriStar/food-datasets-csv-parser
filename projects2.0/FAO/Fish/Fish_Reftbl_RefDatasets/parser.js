@@ -1,6 +1,6 @@
 const path = require('path');
 // @TODO update require. when we export this method - we can connect it from index.js
-const { parseCsv, csvToJson } = require(`${process.cwd()}/dist/index.cjs`);
+const { csvToJson, parseCsv } = require('../../../../dist/index.cjs');
 
 async function Main() {
   const rawFilePath = path.join(__dirname, `Fish_Reftbl_RefDatasets.csv`);
