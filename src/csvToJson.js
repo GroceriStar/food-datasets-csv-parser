@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { write } from '@groceristar/static-data-generator';
+import { write, readDir } from '@groceristar/static-data-generator';
 // import { joinPath } from './utils';
 import fs from 'fs';
 import parseCsv from './parseCsv';
@@ -52,24 +52,24 @@ const assign = (file, dataEntries) => {
  * @param {data} data
  * @returns {Promise<void>} Promise
  */
-const csvToJson = (dirPath, data) => {
+const csvToJson = async (dirPath, data) => {
   // stringify data with indent
   const json = JSON.stringify(data, null, 2);
+  const files = await readDir(dirPath);
 
-  fs.readdir(dirPath, async (err, files) => {
-    // find the csv file
-    const csvFile = files.find((file) => {
-      if (file.split('.')[1] === 'csv') {
-        return file;
-      }
-      return false;
-    });
-    // save the name of the csv file without the extension
-    const [fileName] = csvFile.split('.'); // => ["filename", "csv"]
-
-    // create a JSON file with the data provided
-    await write(`${dirPath}/${fileName}.json`, json);
+  // find the csv file
+  const csvFile = files.find((file) => {
+    if (file.split('.')[1] === 'csv') {
+      return file;
+    }
+    return false;
   });
+
+  // save the name of the csv file without the extension
+  const [fileName] = csvFile.split('.'); // => ["filename", "csv"]
+
+  // create a JSON file with the data provided
+  await write(`${dirPath}/${fileName}.json`, json);
 };
 
 export default csvToJson;
