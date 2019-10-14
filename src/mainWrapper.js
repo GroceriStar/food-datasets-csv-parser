@@ -3,7 +3,7 @@ import path from 'path';
 import csvToJson from './csvToJson';
 import parseCsv from './parseCsv';
 
-const mainWrapper = async (filename) => {
+const mainWrapper = async (filename, dirPath) => {
     // const headers = await getHeaders(filename);
   
     // console.log(headers);
@@ -29,9 +29,9 @@ const mainWrapper = async (filename) => {
     // parseDirectoryFiles(directoryPath, headers);
     // parseDirectoryFiles(filename, headers);
 
-    const rawFilePath = path.join(__dirname, `Fish_Reftbl_RefDatasets.csv`);
+    const rawFilePath = path.join(dirPath, filename);
     const data = await parseCsv(rawFilePath);
-    await csvToJson(__dirname, data);
+    await csvToJson(dirPath, data);
 };
 
 export {
