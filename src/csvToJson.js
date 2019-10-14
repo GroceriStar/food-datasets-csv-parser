@@ -3,9 +3,9 @@ import { write, readDir } from '@groceristar/static-data-generator';
 
 const generateJsonFile = async (fileInfo, data) => {
   // stringify data with indent
-  const json = JSON.stringify(data, null, 2);
+  const jsonObjects = JSON.stringify(data, null, 2);
 
-  await write(`${fileInfo[0]}/${fileInfo[1]}.json`, json);
+  await write(`${fileInfo[0]}/${fileInfo[1]}.json`, jsonObjects);
 };
 
 const assign = async (fileInfo, dataEntries) => {
