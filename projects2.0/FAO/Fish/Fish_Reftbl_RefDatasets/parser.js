@@ -6,5 +6,8 @@ async function Main() {
   const rawFilePath = path.join(__dirname, `Fish_Reftbl_RefDatasets.csv`);
   const data = await parseCsv(rawFilePath);
   await csvToJson(__dirname, data);
+
+  // test json spliting
+  await csvToJson(__dirname, data, true);
 }
 Main();
