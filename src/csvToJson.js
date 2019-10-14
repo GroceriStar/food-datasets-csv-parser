@@ -7,9 +7,9 @@ const generateJsonFile = async (fileInfo, data) => {
   await write(`${fileInfo[0]}/${fileInfo[1]}.json`, jsonObjects);
 };
 
-const assign = async (fileInfo, dataEntries) => {
+const assign = async (fileInfo, dataEntries, size = 1000) => {
   // @TODO add if env.development and use console.log(xxx)
-  const maxEntriesPerFile = 1000;
+  const maxEntriesPerFile = size;
   const fileCount = Math.ceil(dataEntries.length / maxEntriesPerFile);
   let start;
   let stop;
