@@ -8,5 +8,8 @@ async function Main() {
   const rawFilePath = `${__dirname}/Fish_NV_sum (per 100 g EP).csv`;
   const data = await parseCsv(rawFilePath);
   await csvToJson(__dirname, data);
+
+  // test json spliting
+  await csvToJson(__dirname, data, true);
 }
 Main();

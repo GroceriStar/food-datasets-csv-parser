@@ -1,36 +1,19 @@
-/* eslint-disable no-unused-vars */
 import { write, readDir } from '@groceristar/static-data-generator';
-// import { joinPath } from './utils';
-import fs from 'fs';
-import parseCsv from './parseCsv';
 
-function makeFullPath(pathData, filetype) {
-  return ''.concat(pathData[0], pathData[1], filetype); // put pathData + filetype into 1 valid file name string
-}
+const generateJsonFile = async (fileInfo, data) => {
+  // stringify data with indent
+  const jsonObjects = JSON.stringify(data, null, 2);
 
-const generate = (file, data) => {
-  // file => [full directory path, 'filename', 'filetype']
-  const fullPath = makeFullPath(file, '.json');
-
-  console.log('---file writer started---');
-  console.log(fullPath);
-  console.log('---file writer ended---');
-
-  write(fullPath, data);
+  await write(`${fileInfo[0]}/${fileInfo[1]}.json`, jsonObjects);
 };
 
-// @TODO update this method later, when we'll migrate to `write` from generator
-
-// @TODO as this method using "generateJsonFiles" method - it should be updated.
-// or maybe move it into generator file, etc.
-const assign = (file, dataEntries) => {
+const assign = async (fileInfo, dataEntries, size = 1000) => {
   // @TODO add if env.development and use console.log(xxx)
-  const maxEntriesPerFile = 10000;
+  const maxEntriesPerFile = size;
   const fileCount = Math.ceil(dataEntries.length / maxEntriesPerFile);
-  console.log('---assign started---');
   let start;
   let stop;
-  const fileInfo = file;
+  const tmpFile = fileInfo;
   const savedFileName = fileInfo[1];
   for (let i = 0; i < fileCount; i += 1) {
     start = i * maxEntriesPerFile;
@@ -40,9 +23,9 @@ const assign = (file, dataEntries) => {
       stop = (i + 1) * maxEntriesPerFile - 1;
     }
     const jsonObjects = dataEntries.slice(start, stop);
-    fileInfo[1] += i.toString(); // add i to file name
-    generate(fileInfo, jsonObjects);
-    fileInfo[1] = savedFileName; // delete i from file name so nxt file can have proper i
+    tmpFile[1] += `-${i}`; // add i to file name
+    generateJsonFile(fileInfo, jsonObjects);
+    tmpFile[1] = savedFileName; // delete i from file name so nxt file can have proper i
   }
 };
 
@@ -52,9 +35,7 @@ const assign = (file, dataEntries) => {
  * @param {data} data
  * @returns {Promise<void>} Promise
  */
-const csvToJson = async (dirPath, data) => {
-  // stringify data with indent
-  const json = JSON.stringify(data, null, 2);
+const csvToJson = async (dirPath, data, split = false) => {
   const files = await readDir(dirPath);
 
   // find the csv file
@@ -65,11 +46,13 @@ const csvToJson = async (dirPath, data) => {
     return false;
   });
 
-  // save the name of the csv file without the extension
-  const [fileName] = csvFile.split('.'); // => ["filename", "csv"]
+  const fileInfo = [dirPath, ...csvFile.split('.')]; // => ["dirName", "filename", "csv"]
 
-  // create a JSON file with the data provided
-  await write(`${dirPath}/${fileName}.json`, json);
+  if (split) {
+    assign(fileInfo, data);
+  } else {
+    generateJsonFile(fileInfo, data);
+  }
 };
 
 export default csvToJson;
