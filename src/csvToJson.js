@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { write, readDir } from '@groceristar/static-data-generator';
 
 const generateJsonFile = async (fileInfo, data) => {
@@ -12,7 +11,6 @@ const assign = async (fileInfo, dataEntries) => {
   // @TODO add if env.development and use console.log(xxx)
   const maxEntriesPerFile = 1000;
   const fileCount = Math.ceil(dataEntries.length / maxEntriesPerFile);
-  console.log('---assign started---');
   let start;
   let stop;
   const tmpFile = fileInfo;
@@ -48,7 +46,6 @@ const csvToJson = async (dirPath, data, split = false) => {
     return false;
   });
 
-  // save the name of the csv file without the extension
   const fileInfo = [dirPath, ...csvFile.split('.')]; // => ["dirName", "filename", "csv"]
 
   if (split) {
