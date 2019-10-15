@@ -3,7 +3,6 @@ import { resolve, join } from 'path';
 
 // import pathExists from 'path-exists';
 // import { fixPath } from 'generator'
-
 /**
  * fixPath()
  * @param {String} path
