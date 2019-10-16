@@ -1,3 +1,5 @@
+<p align="center"><img src="https://avatars2.githubusercontent.com/u/36658223?s=200&v=4" alt=""/></p>
+
 # food-datasets-csv-parser
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/1ec3613f4b74a3742e18/maintainability)](https://codeclimate.com/github/GroceriStar/food-datasets-csv-parser/maintainability)
