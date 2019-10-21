@@ -16,6 +16,7 @@
 - [ ] find out, what methods should be removed from utils.js, because they are duplicates from generator (partially done)
 - [ ] ESLint for projects2.0, projects3.0 folder. now it's disabled
 - [ ] Try Lerna or move out projects from this repository
+- [ ] Improve fileSystem file. we not using it actually, but maybe we can use it while we have a dataset and we trying to parse a whole dataset at one place...
 
 #### scripts for testing few of our parsers - old, very old and new one
 

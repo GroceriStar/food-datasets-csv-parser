@@ -1,5 +1,4 @@
 import path from 'path';
-// import getHeaders from './getHeaders';
 import csvToJson from './csvToJson';
 import parseCsv from './parseCsv';
 

@@ -25,9 +25,10 @@ const external = [
   '@groceristar/static-data-generator',
   'fs',
   'path',
+  'path-exists',
   'csv-parser',
   'lodash',
-  'path-exists',
+  'shelljs',
 ];
 
 // list of plugins used during building process
