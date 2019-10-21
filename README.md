@@ -115,10 +115,18 @@ generate JSON file with the data provided
  * @returns {Promise<void>} Promise
  */
 ```
-#### `assign( fileName, dataEntries )`
+#### `assign( fileInfo, dataEntries )`
 
-Total entries in csv file/10,000 entries per json file => gets number of json files to be generated => store in `fileCount`. For each file, calculate start/stop indexes (0-9999,10000-19999, 20000-29999..) based on max entries per file (10000). For the last file, the `stop` index will be the length of `dataEntries` - 1, because it is unlikely it will end on a perfect multiple of `maxEntriesPerFile`. Creates sliced array called `jsonObjects` from `dataEntries[start]` to `dataEntries[stop]`. The current file number (`i`), the `fileName`, and `jsonObjects` are passed to `generate` to make the file.
+Total entries in csv file/1000 entries per json file => gets number of json files to be generated => store in `fileCount`. For each file, calculate start/stop indexes based on max entries per file (1000). For the last file, the `stop` index will be the length of `dataEntries` - 1, Creates sliced array called `jsonObjects` from `dataEntries[start]` to `dataEntries[stop]`. The current file number (`i`), the `fileName`, and `jsonObjects` are passed to `generateJsonFile` to make the file.
 
+```
+/**
+ *
+ * @param {Array<string>} fileInfo
+ * @param {Array} dataEntries
+ * @param {number} size
+ */
+```
 #### `generate( i, fileName, data )`– requires writeFile from sd/generator to work.
 
 Writes sliced array `data` to json file named `fileName+i`
