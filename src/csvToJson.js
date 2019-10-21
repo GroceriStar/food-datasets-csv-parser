@@ -31,9 +31,9 @@ const assign = async (fileInfo, dataEntries, size = 1000) => {
 
 /**
  * @async
- * @param {dirPath} dirPath directory path
- * @param {data} data
- * @param {split} split split data to a serveral json files
+ * @param {string} dirPath directory path
+ * @param {Array} data
+ * @param {boolean} split split data to a serveral json files
  * @returns {Promise<void>} Promise
  */
 const csvToJson = async (dirPath, data, split = false) => {
