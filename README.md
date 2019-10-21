@@ -71,22 +71,9 @@ The splitted elements will be stored at the given `path`/`filename_elements`.
 
 Create a folder you want the generated json file(s) to be.
 Also create a parser.js file in the created folder.
-In csvParser.js call `ParseDirectoryFiles()` from csvParser.js with
-parameters `directoryPath` (the folder to read your csv file(s) from) as string,
-and headers (the header of the csv files ) as array of string.
-
-**In csvParser.js**
-
-```
-ParseDirectoryFiles(directoryPath, headers)
-  => csvToJson(directory, file, headers)
-      => assign(fileName, dataEntries)
-        => generate(i, fileName, data)
-```
-
-`ParseDirectoryFiles` gets a directory path from call, then chunks the information for each file into 3 parts: the directory path, file name, and file type. They are stored in `fileInfo` at index 0, 1, and 2.
-If `fileInfo[2]` is `csv`, then `fileInfo` is passed in `csvToJson(fileInfo, headers)`.  
-Each csv file is passed into `csvParser()`.
+In csvParser.js call `parseCsv()` with `await` keyword because it's asynchronous function with
+parameters `${__dirname}/${filename}` (the folder to read your csv file(s) from) as string,
+then call `csvToJson()` with parameters `${__dirname}/${filename}, data` data returned from `parseCsv()`
 
 #### `parseCsv()` require csv-Parser modules
 
@@ -104,7 +91,7 @@ asynchronous function that can parse csv files
 
 #### `csvToJson( dirPath, data, split = false )`
 
-generate JSON file with the data provided 
+generate JSON file with the data provided
 
 ```
 /**
@@ -115,6 +102,7 @@ generate JSON file with the data provided
  * @returns {Promise<void>} Promise
  */
 ```
+
 #### `assign( fileInfo, dataEntries )`
 
 Total entries in csv file/1000 entries per json file => gets number of json files to be generated => store in `fileCount`. For each file, calculate start/stop indexes based on max entries per file (1000). For the last file, the `stop` index will be the length of `dataEntries` - 1, Creates sliced array called `jsonObjects` from `dataEntries[start]` to `dataEntries[stop]`. The current file number (`i`), the `fileName`, and `jsonObjects` are passed to `generateJsonFile` to make the file.
@@ -138,7 +126,7 @@ Writes sliced array `data` to json file named `fileName-${i}`
  * @param {Array<string>} fileInfo
  * @param {Array} data
  */
- ```
+```
 
 ### ES5 and ES6 simple differences reference
 
