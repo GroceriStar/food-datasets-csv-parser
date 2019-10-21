@@ -102,10 +102,19 @@ asynchronous function that can parse csv files
  */
 ```
 
-#### `csvToJson()` require csv-Parser modules`
+#### `csvToJson( dirPath, data, split = false )`
 
-Fill `dataEntries` array with all csv entries => Total entries in csv file/10,000 entries per json file => gets number of json files to be generated
+generate JSON file with the data provided 
 
+```
+/**
+ * @async
+ * @param {dirPath} dirPath directory path
+ * @param {data} data
+ * @param {split} split split data to a serveral json files
+ * @returns {Promise<void>} Promise
+ */
+```
 #### `assign( fileName, dataEntries )`
 
 Total entries in csv file/10,000 entries per json file => gets number of json files to be generated => store in `fileCount`. For each file, calculate start/stop indexes (0-9999,10000-19999, 20000-29999..) based on max entries per file (10000). For the last file, the `stop` index will be the length of `dataEntries` - 1, because it is unlikely it will end on a perfect multiple of `maxEntriesPerFile`. Creates sliced array called `jsonObjects` from `dataEntries[start]` to `dataEntries[stop]`. The current file number (`i`), the `fileName`, and `jsonObjects` are passed to `generate` to make the file.
