@@ -1,5 +1,10 @@
 import { write, readDir } from '@groceristar/static-data-generator';
 
+/**
+ *
+ * @param {Array<string>} fileInfo
+ * @param {Array} data
+ */
 const generateJsonFile = async (fileInfo, data) => {
   // stringify data with indent
   const jsonObjects = JSON.stringify(data, null, 2);
@@ -7,6 +12,12 @@ const generateJsonFile = async (fileInfo, data) => {
   await write(`${fileInfo[0]}/${fileInfo[1]}.json`, jsonObjects);
 };
 
+/**
+ *
+ * @param {Array<string>} fileInfo
+ * @param {Array} dataEntries
+ * @param {number} size
+ */
 const assign = async (fileInfo, dataEntries, size = 1000) => {
   // @TODO add if env.development and use console.log(xxx)
   const maxEntriesPerFile = size;
@@ -31,8 +42,9 @@ const assign = async (fileInfo, dataEntries, size = 1000) => {
 
 /**
  * @async
- * @param {dirPath} dirPath directory path
- * @param {data} data
+ * @param {string} dirPath directory path
+ * @param {Array} data
+ * @param {boolean} split split data to a serveral json files
  * @returns {Promise<void>} Promise
  */
 const csvToJson = async (dirPath, data, split = false) => {

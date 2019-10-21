@@ -71,22 +71,9 @@ The splitted elements will be stored at the given `path`/`filename_elements`.
 
 Create a folder you want the generated json file(s) to be.
 Also create a parser.js file in the created folder.
-In csvParser.js call `ParseDirectoryFiles()` from csvParser.js with
-parameters `directoryPath` (the folder to read your csv file(s) from) as string,
-and headers (the header of the csv files ) as array of string.
-
-**In csvParser.js**
-
-```
-ParseDirectoryFiles(directoryPath, headers)
-  => csvToJson(directory, file, headers)
-      => assign(fileName, dataEntries)
-        => generate(i, fileName, data)
-```
-
-`ParseDirectoryFiles` gets a directory path from call, then chunks the information for each file into 3 parts: the directory path, file name, and file type. They are stored in `fileInfo` at index 0, 1, and 2.
-If `fileInfo[2]` is `csv`, then `fileInfo` is passed in `csvToJson(fileInfo, headers)`.  
-Each csv file is passed into `csvParser()`.
+In csvParser.js call `parseCsv()` with `await` keyword because it's asynchronous function with
+parameters `${__dirname}/${filename}` (the folder to read your csv file(s) from) as string,
+then call `csvToJson()` with parameters `${__dirname}/${filename}, data` data returned from `parseCsv()`
 
 #### `parseCsv()` require csv-Parser modules
 
@@ -102,17 +89,44 @@ asynchronous function that can parse csv files
  */
 ```
 
-#### `csvToJson()` require csv-Parser modules`
+#### `csvToJson( dirPath, data, split = false )`
 
-Fill `dataEntries` array with all csv entries => Total entries in csv file/10,000 entries per json file => gets number of json files to be generated
+generate JSON file with the data provided
 
-#### `assign( fileName, dataEntries )`
+```
+/**
+ * @async
+ * @param {dirPath} dirPath directory path
+ * @param {data} data
+ * @param {split} split split data to a serveral json files
+ * @returns {Promise<void>} Promise
+ */
+```
 
-Total entries in csv file/10,000 entries per json file => gets number of json files to be generated => store in `fileCount`. For each file, calculate start/stop indexes (0-9999,10000-19999, 20000-29999..) based on max entries per file (10000). For the last file, the `stop` index will be the length of `dataEntries` - 1, because it is unlikely it will end on a perfect multiple of `maxEntriesPerFile`. Creates sliced array called `jsonObjects` from `dataEntries[start]` to `dataEntries[stop]`. The current file number (`i`), the `fileName`, and `jsonObjects` are passed to `generate` to make the file.
+#### `assign( fileInfo, dataEntries )`
 
-#### `generate( i, fileName, data )`– requires writeFile from sd/generator to work.
+Total entries in csv file/1000 entries per json file => gets number of json files to be generated => store in `fileCount`. For each file, calculate start/stop indexes based on max entries per file (1000). For the last file, the `stop` index will be the length of `dataEntries` - 1, Creates sliced array called `jsonObjects` from `dataEntries[start]` to `dataEntries[stop]`. The current file number (`i`), the `fileName`, and `jsonObjects` are passed to `generateJsonFile` to make the file.
 
-Writes sliced array `data` to json file named `fileName+i`
+```
+/**
+ *
+ * @param {Array<string>} fileInfo
+ * @param {Array} dataEntries
+ * @param {number} size
+ */
+```
+
+#### `generateJsonFile( fileInfo, data )`– requires writeFile from sd/generator to work.
+
+Writes sliced array `data` to json file named `fileName-${i}`
+
+```
+/**
+ *
+ * @param {Array<string>} fileInfo
+ * @param {Array} data
+ */
+```
 
 ### ES5 and ES6 simple differences reference
 
