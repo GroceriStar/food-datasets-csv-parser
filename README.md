@@ -127,9 +127,18 @@ Total entries in csv file/1000 entries per json file => gets number of json file
  * @param {number} size
  */
 ```
-#### `generate( i, fileName, data )`– requires writeFile from sd/generator to work.
 
-Writes sliced array `data` to json file named `fileName+i`
+#### `generateJsonFile( fileInfo, data )`– requires writeFile from sd/generator to work.
+
+Writes sliced array `data` to json file named `fileName-${i}`
+
+```
+/**
+ *
+ * @param {Array<string>} fileInfo
+ * @param {Array} data
+ */
+ ```
 
 ### ES5 and ES6 simple differences reference
 

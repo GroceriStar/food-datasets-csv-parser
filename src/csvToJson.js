@@ -1,5 +1,10 @@
 import { write, readDir } from '@groceristar/static-data-generator';
 
+/**
+ *
+ * @param {Array<string>} fileInfo
+ * @param {Array} data
+ */
 const generateJsonFile = async (fileInfo, data) => {
   // stringify data with indent
   const jsonObjects = JSON.stringify(data, null, 2);
