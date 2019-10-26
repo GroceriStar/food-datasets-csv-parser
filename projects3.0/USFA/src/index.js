@@ -11,10 +11,6 @@ import {
 } from './files';
 // } from '@files';
 
-// import { __generateId, __generateDate } from '@utils';
-
-// parserUSFADerivationCode();
-
 export {
   parserUSFADerivationCode,
   parserUSFANutrition,
