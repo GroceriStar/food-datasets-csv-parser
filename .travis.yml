@@ -2,10 +2,10 @@ language: node_js
 node_js:
   - 'lts/*'
   - 'node'
-  - 12
+  # - 12
 
 install:
-  #- cd ./package
+  - cd ./package
   - npm install
 
 before_script:
