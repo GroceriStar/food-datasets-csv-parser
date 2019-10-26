@@ -1,5 +1,5 @@
 {
-  "name": "@groceristar/usfa-data-parser",
+  "name": "@groceristar/restaurants-data-parser",
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {

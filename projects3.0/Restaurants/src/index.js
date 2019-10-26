@@ -1,11 +1,12 @@
 import _ from 'lodash';
 
-// { parseFoodComposition,}
 
-import {
-  csvToJson,
-  parseDirectoryFiles
-} from '@groceristar/food-dataset-csv-parser';
+// import {
+//   csvToJson,
+//   parseDirectoryFiles
+// } from '@groceristar/food-dataset-csv-parser';
+
+
 
 // import {
 //   FinlandDataSet,
@@ -20,7 +21,7 @@ import {
 
 import { __generateId } from '@utils';
 
-import { parseFoodComposition } from './csv_parser';
+
 
 // const { resolve } from 'path'
 //
@@ -35,6 +36,7 @@ const displayFoodCompositionData = () => {
 };
 
 export {};
+
 // export {
 //  FinlandDataSet,
 //  FranceDataSet,
