@@ -10,7 +10,7 @@ import pkg from './package.json';
 // Default: [ '.mjs', '.js', '.json', '.node' ]
 const extensions = ['.js'];
 
-const name = 'FoodCompositionParser';
+const name = 'USFADatasetParser';
 
 // packages that should be treated as external dependencies, not bundled
 // e.g. ['axios']

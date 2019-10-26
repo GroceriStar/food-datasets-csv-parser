@@ -13,7 +13,7 @@ import pkg from './package.json';
 
 const extensions = ['.js', '.json'];
 
-const name = 'SUFADatasetParser';
+const name = 'USFADatasetParser';
 
 // packages that should be treated as external or global dependencies, not bundled
 const external = [
