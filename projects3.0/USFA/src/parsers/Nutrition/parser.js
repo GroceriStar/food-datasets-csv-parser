@@ -1,29 +1,16 @@
-import { join } from 'path';
+// const path = require('path');
+// @TODO update require. when we export this method - we can connect it from index.js
+const {
+  mainWrapper
+} = require('../../package/dist/index.cjs.js');
 
-import { parseDirectoryFiles } from '@groceristar/food-dataset-csv-parser';
-// import { parseDirectoryFiles, getHeaders } from '@groceristar/food-dataset-csv-parser'
+async function Main() {
+  const rawFilePath = `${__dirname}/Nutrient0.csv`;
+  // const rawFilePath = `${__dirname}/Nutrient1.csv`;
+  // const rawFilePath = `${__dirname}/Nutrient2.csv`;
+  // const rawFilePath = `${__dirname}/Nutrient3.csv`;
+  // const rawFilePath = `${__dirname}/Nutrient4.csv`;
+  mainWrapper(rawFilePath)
 
-const parserUSFANutrition = () => {
-  // const headers = getHeaders('./Fish_NV_sum (per 100 g EP).csv');
-
-  const headers = [
-    'NDB_No',
-    'Nutrient_Code',
-    'Nutrient_name',
-    'Derivation_Code',
-    'Output_value',
-    'Output_uom',
-  ];
-
-  // @TODO changes required.
-  // we can use module resolver for this
-  const directory = '@raw/Nutrition';
-
-  // joining path of directory
-  const directoryPath = join(__dirname, directory);
-
-  // @TODO I don't like that this scripts are called as it is... looks un-cool
-  parseDirectoryFiles(directoryPath, headers);
-};
-
-export default parserUSFANutrition;
+}
+Main();

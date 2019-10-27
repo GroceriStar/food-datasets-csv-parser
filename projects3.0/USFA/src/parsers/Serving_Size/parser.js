@@ -1,27 +1,12 @@
-import { join } from 'path';
+// const path = require('path');
+// @TODO update require. when we export this method - we can connect it from index.js
+const {
+  mainWrapper
+} = require('../../package/dist/index.cjs.js');
 
-import { parseDirectoryFiles } from '@groceristar/food-dataset-csv-parser';
-// import { parseDirectoryFiles, getHeaders } from '@groceristar/food-dataset-csv-parser'
+async function Main() {
+  const rawFilePath = `${__dirname}/Serving_Size.csv`;
+  mainWrapper(rawFilePath)
 
-const parserUSFAServingSize = () => {
-  // const headers = getHeaders('./Fish_NV_sum (per 100 g EP).csv');
-
-  const headers = [
-    'NDB_No',
-    'Serving_Size',
-    'Serving_Size_UOM',
-    'Household_Serving_Size',
-    'Household_Serving_Size_UOM',
-  ];
-
-  // @TODO changes required
-  const directory = '@raw/Serving_Size';
-
-  // joining path of directory
-  const directoryPath = join(__dirname, directory);
-
-  // @TODO I don't like that this scripts are called as it is... looks un-cool
-  parseDirectoryFiles(directoryPath, headers);
-};
-
-export default parserUSFAServingSize;
+}
+Main();
