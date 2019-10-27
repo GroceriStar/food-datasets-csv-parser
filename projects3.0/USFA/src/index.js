@@ -11,6 +11,13 @@ import {
 } from './files';
 // } from '@files';
 
+// import {
+//   parserUSFADerivationCode,
+//   parserUSFANutrition,
+//   parserUSFAProduct,
+//   parserUSFAServingSize,
+// } from './parsers/index';
+
 export {
   parserUSFADerivationCode,
   parserUSFANutrition,
