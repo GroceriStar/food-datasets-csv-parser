@@ -24,7 +24,6 @@ const plugins = [
       alias: {
         '~': './src/data',
         '@files': './src/files.js',
-        '@generator': './generator',
         '@raw': '../../../raw',
       },
     },
