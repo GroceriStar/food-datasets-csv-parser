@@ -1,12 +1,23 @@
-// const path = require('path');
-// @TODO update require. when we export this method - we can connect it from index.js
-const {
-  mainWrapper
-} = require('../../package/dist/index.cjs.js');
+// import { join } from 'path';
 
-async function Main() {
+import {
+  mainWrapper
+} from '@groceristar/food-dataset-csv-parser';
+
+const parserUSFAProduct = async () => {
+  console.log('--- parserUSFAProduct start ---');
+
+  // // @TODO changes required.
+  // // we can use module resolver for this
+  // const directory = '@raw/Product';
+  //
+  // // joining path of directory
+  // const directoryPath = join(__dirname, directory);
+
+  // @TODO realize - can babel handle those kind of paths?
   const rawFilePath = `${__dirname}/Products0.csv`;
   mainWrapper(rawFilePath)
 
-}
-Main();
+};
+
+export default parserUSFAProduct;
