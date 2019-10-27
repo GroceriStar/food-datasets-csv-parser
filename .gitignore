@@ -64,3 +64,4 @@ package-lock.json
 yarn.lock
 package/dist
 dist
+package/node_modules/*
