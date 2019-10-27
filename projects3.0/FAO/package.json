@@ -59,8 +59,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@groceristar/food-dataset-csv-parser": "^0.2.1",
+    "@groceristar/food-dataset-csv-parser": "^0.2.4",
     "@groceristar/sd-wrapper": "^4.10.0",
+    "@groceristar/static-data-generator": "^1.1.4",
     "lodash": "^4.17.11",
     "path": "^0.12.7",
     "uuid": "^3.3.2"
