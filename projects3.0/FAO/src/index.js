@@ -5,10 +5,17 @@
 //   parseDirectoryFiles,
 // } from '@groceristar/food-dataset-csv-parser';
 const path = require("path");
-const findCsvFiles = require("./files");
+const { findCsvFiles, parseCsv, csvToJson } = require("../../../package/dist/index.cjs");
 
-const rawPath = path.resolve("../raw");
+async function Main() {
+  const rawPath = path.resolve("../raw");
+  const csvFiles = await findCsvFiles(rawPath);
 
-findCsvFiles(rawPath).then(csvFiles => {
-  console.log(csvFiles);
-})
+  csvFiles.forEach(async file => {
+    const { filename, dirPath } = file;
+    const data = await parseCsv(`${dirPath}/${filename}`);
+    await csvToJson(dirPath, data);
+  });
+}
+
+Main();
