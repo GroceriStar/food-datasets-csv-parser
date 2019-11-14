@@ -7,8 +7,13 @@
 //
 // export { Nutrient, Derivation_Code, Product, Serving_Size };
 
+
+// const path = require("path");
+// const {
+//   readDir
+// } = require("@groceristar/static-data-generator");
 // replace with index?
-import parserUSFADerivationCode from './parsers/Derivation_Code/parser';
+import parserUSFADerivationCode from './parsers/Derivation_Code_Description/parser';
 import parserUSFANutrition from './parsers/Nutrition/parser';
 import parserUSFAProduct from './parsers/Product/parser';
 import parserUSFAServingSize from './parsers/Serving_Size/parser';
