@@ -1,6 +1,6 @@
 {
   "name": "@groceristar/food-dataset-csv-parser",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "license": "MIT",
   "scripts": {
     "bundle": "rollup -c",
@@ -16,11 +16,6 @@
     "format": "prettier",
     "format:fix": "prettier ./src/**.js --write",
     "csv:fc": "node ../projects2.0/FoodComposition/parser",
-    "csv:usfa1": "node ../projects2.0/USFA/Derivation_Code_Description/parser",
-    "csv:usfa2": "node ../projects2.0/USFA/Nutrition/parser",
-    "csv:usfa3": "node ../projects2.0/USFA/Product/parser",
-    "csv:usfa4": "node ../projects2.0/USFA/Serving_Size/parser",
-    "csv:fish_reftbl": "node ../projects2.0/FAO/Fish/Fish_Reftbl_RefDatasets/parser",
     "csv:res": "node ../projects2.0/Restaurants/parser"
   },
   "description": "module to use static JSON files with groceristar projects",
@@ -67,7 +62,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@groceristar/static-data-generator": "^1.1.4",
+    "@groceristar/static-data-generator": "^1.1.5",
     "csv-parser": "^2.3.0",
     "fs": "^0.0.2",
     "lodash": "^4.17.11",
