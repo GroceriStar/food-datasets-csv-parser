@@ -8,8 +8,8 @@ import { write, readDir } from '@groceristar/static-data-generator';
 const generateJsonFile = async (fileInfo, data) => {
   // stringify data with indent
   const jsonObjects = JSON.stringify(data, null, 2);
-
-  await write(`${fileInfo[0]}/${fileInfo[1]}.json`, jsonObjects);
+  const newFileName = `${fileInfo[0]}/${fileInfo[1]}.json`;
+  await write(newFileName, jsonObjects);
 };
 
 /**
@@ -26,6 +26,7 @@ const assign = async (fileInfo, dataEntries, size = 1000) => {
   let stop;
   const tmpFile = fileInfo;
   const savedFileName = fileInfo[1];
+  // @TODO it's looking so complex.
   for (let i = 0; i < fileCount; i += 1) {
     start = i * maxEntriesPerFile;
     if (i + 1 === fileCount) {
@@ -58,7 +59,8 @@ const csvToJson = async (dirPath, data, split = false) => {
     return false;
   });
 
-  const fileInfo = [dirPath, ...csvFile.split('.')]; // => ["dirName", "filename", "csv"]
+  // => ["dirName", "filename", "csv"]
+  const fileInfo = [dirPath, ...csvFile.split('.')];
 
   if (split) {
     assign(fileInfo, data);

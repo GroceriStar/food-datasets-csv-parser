@@ -1,10 +1,3 @@
-// import _ from 'lodash';
-
-// import {
-//   csvToJson,
-//   parseDirectoryFiles
-// } from '@groceristar/food-dataset-csv-parser';
-
 const path = require('path');
 const {
   findCsvFiles,

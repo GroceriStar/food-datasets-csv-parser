@@ -1,11 +1,9 @@
 /* eslint-disable no-unused-vars */
 
-// import {
-//   csvToJson,
-//   parseDirectoryFiles,
-// } from '@groceristar/food-dataset-csv-parser';
 const path = require("path");
-const { findCsvFiles, parseCsv, csvToJson } = require("../../../package/dist/index.cjs");
+// const { findCsvFiles, parseCsv, csvToJson } = require("../../../package/dist/index.cjs");
+const { findCsvFiles, parseCsv, csvToJson } = require('@groceristar/food-dataset-csv-parser');
+
 
 async function Main() {
   const rawPath = path.resolve("./raw");
