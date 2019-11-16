@@ -15,7 +15,7 @@
     "test:cover": "jest --coverage",
     "jsonlint": "node jsonlint.config.js",
     "format": "prettier",
-    "parse": "node ./debug"
+    "parse": "node src"
   },
   "description": "Food Composition database parser",
   "main": "dist/index.cjs.js",
