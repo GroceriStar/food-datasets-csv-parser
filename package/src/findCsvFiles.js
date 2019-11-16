@@ -11,6 +11,8 @@ async function findCsvFiles(dirPath) {
 
   // eslint-disable-next-line no-shadow
   async function helper(dirPath) {
+    if (dirPath.includes('.json') || dirPath.includes('.md')) return;
+
     const folders = await readDir(dirPath);
     let newDirPath = '';
 

@@ -13,7 +13,7 @@ const {
 } = require('@groceristar/food-dataset-csv-parser');
 
 async function Main() {
-  const rawPath = path.resolve('../raw');
+  const rawPath = path.resolve('./raw');
   const csvFiles = await findCsvFiles(rawPath);
 
   csvFiles.forEach(async (file) => {

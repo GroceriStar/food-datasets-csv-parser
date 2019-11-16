@@ -8,7 +8,7 @@ const path = require("path");
 const { findCsvFiles, parseCsv, csvToJson } = require("../../../package/dist/index.cjs");
 
 async function Main() {
-  const rawPath = path.resolve("../raw");
+  const rawPath = path.resolve("./raw");
   const csvFiles = await findCsvFiles(rawPath);
 
   csvFiles.forEach(async file => {
